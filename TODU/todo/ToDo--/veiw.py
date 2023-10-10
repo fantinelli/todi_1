@@ -1,4 +1,5 @@
-from controler import *
+from Controller import *
+from dao import *
 import os
 
 sair = 0
@@ -13,12 +14,16 @@ while sair == 0:
             os.system("cls")
             tarefa = input("Digite a tarefa > ")
             adicionarTarefa = ControllerAdicionarTarefa(tarefa)
+            adicionarTarefa = DaoAdicionarTarefa(tarefa)
             os.system("pause")
 
-
+    
         case "2":
             os.system("cls")
+            print("Estes são os itens presentes na lista de tarefas: ")
             listarTarefa = ControllerListarTarefa()
+            print("Estes são os itens presentes no DAO: ")
+            listarTarefa = DaoListarTarefa()
             os.system("pause")
 
         case "3":
@@ -26,7 +31,7 @@ while sair == 0:
             listarTarefa = ControllerListarTarefa()
             excluir = input("Digite o número da tarefa que deseja excluir > ")
             excluirTarefa = ControllerExcluirTarefa(excluir)
-            listarTarefa = ControllerListarTarefa()
+            excluirTarefa = DaoExcluirTarefa(excluir)
             os.system("pause")
 
         case "4":
