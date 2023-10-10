@@ -1,14 +1,17 @@
-from model import *
+class ToDo():
 
+    def __init__(self):
+        self.lista = []
 
-class ControllerAdicionarTarefa():
-    def __init__(self, tarefa):
-        self.tarefa = tarefa
-    
-   
+    def AdicionarTarefa(self, tarefa):
+        self.lista.append(tarefa)
+        return True
 
-class controlLerExcluirTarefa():
-    pass
+    def RemoverTarefa(self, excluir):
+        self.lista.pop(excluir)
+        return True
 
-class controllerAdicionarTarefa():
-    pass
+    def ListarTarefas(self):
+        return self.lista
+
+TODO = ToDo()
