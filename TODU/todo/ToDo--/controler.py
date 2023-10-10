@@ -1,17 +1,47 @@
-class ToDo():
+from Model import *
+import os
 
+class ControllerAdicionarTarefa():
+    def __init__(self, tarefa):
+
+        try:
+            if tarefa == "":
+                print("Digite uma tarefa válida.")
+
+            else:
+
+                try:
+                    self.tarefa = tarefa
+                    if TODO.AdicionarTarefa(self.tarefa) == True:
+                        print("Tarefa adicionada.")
+                    else:
+                        print("Algum problema foi encontrado.")
+
+                except Exception as erro:
+                    print("Erro ao adicionar a tarefa: {erro}")
+
+        except Exception as erro:
+                print("Erro ao adicionar a tarefa: {erro}")
+
+class ControllerExcluirTarefa():
+    def __init__(self, excluir):
+        self.excluir = excluir
+
+        try:
+            if TODO.RemoverTarefa(self.excluir) == True and self.excluir >= "0":
+                print("Tarefa removida.")
+                    
+            else:
+                print("Algum problema foi encontrado.")
+
+        except Exception as erro:
+                print("Digite um número válido. Esta tarefa não existe.")
+
+class ControllerListarTarefa():
     def __init__(self):
-        self.lista = []
+        ControllerLista = TODO.ListarTarefas()
+        cont = 0
 
-    def AdicionarTarefa(self, tarefa):
-        self.lista.append(tarefa)
-        return True
-
-    def RemoverTarefa(self, excluir):
-        self.lista.pop(excluir)
-        return True
-
-    def ListarTarefas(self):
-        return self.lista
-
-TODO = ToDo()
+        for tarefas in ControllerLista:
+            cont += 1
+            print(f"{cont}. {tarefas}")
